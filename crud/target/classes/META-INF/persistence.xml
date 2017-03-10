@@ -1,0 +1,10 @@
+<? Xml version = " 1.0 " encoding = " UTF-8 " ?>
+< Persistence  version = " 2.0 "
+Xmlns 	= " http://java.sun.com/xml/ns/persistence "  xmlns : xsi = " http://www.w3.org/2001/XMLSchema-instance "
+	Xsi: schemaLocation = " http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd " >
+	< Persistence-unit  name = " crud " >
+		< Properties >
+			< Property  name = " hibernate.hbm2ddl.auto "  value = " update " />
+		</ Properties >
+	</ Persistence-unit >
+</ Persistence >

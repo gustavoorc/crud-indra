@@ -1,0 +1,50 @@
+Var dados = [];
+Var selecionado =  null ;
+
+Função  enviarCadastro () {
+	Var metodo =  " POST " ;
+	Var p = {nome :  $ ( " #nome " ). val (), sobrenome :  $ ( " #sobrenome " ). val ()), cpf : $ ( " #cpf " ). val (), datanascimento : $ ("#datanascimento".val()};
+	Se (selecionado) {
+		p . Id  =  selecionado . ID ;
+		Metodo =  " PUT " ;
+	}
+	$ . ajax ({método : metodo, contentType :  " application / json " , url :  " rest / cadastroPessoa " , os dados :  JSON . stringify (p)
+	}). Feito (carregar);
+}
+
+Função  apagar ( id ) {
+	$ . Ajax ({method :  " DELETE " , contentType :  " application / json " , url :  " rest / cadastroPessoa / "  + id
+	}). Feito (carregar);
+}
+
+Função  carregar () {
+	Var prodHtml = [];
+	$ . GetJSON ( " rest / cadastroPessoa " , função ( cadastroPessoa ) {
+		Dados = cadastroPessoa;
+		$ . Cada (cadastroPessoa, função ( i , cp ) {
+			ProdHtml . Push ( " <tr onclick = 'seleciona ( "  + i +  " )'> " );
+			ProdHtml . impulso ( " <td> "  +  cp . ID  +  " </ td> <td> "  +  p . Nome  +  " </ td> <td> "
+					+  cP . Sobrenome  +  " </ td> <td> "  +  cp . CPF  +  " </ td> <td> "  +  cp.Data Nascimento  +  " </ td>" );
+			ProdHtml . Push ( " <td> <button onclick = 'apagar ( "  +  cp . Id
+					+  " ) '> X </ button> </ td> " );
+			ProdHtml . Push ( " </ tr> " );
+		});
+		$ ( " #tblProdutos " ). Html ( prodHtml . Join ());
+		LimparSelecionado ();
+	});
+}
+
+Função  seleciona ( i ) {
+	Selecionado = dados [i];
+	$ ( " #tituloForm " ). Texto ( " Editar " )
+	$ ( " #nome " ). Val ( selecionado . Nome );
+	$ ( " #sobrenome " ). Val ( selecionado . sobrenome );
+	$ ( " #cpf " ). Val ( selecionado . cpf );
+	$ ( " #datanascimento").val (selecionado . datanascimento);
+}
+
+Função  limparSelecionado () {
+	Selecionado =  null ;
+	$ ( " #campos entrada [tipo = texto] " ). Val ( " " );
+}
+Carregar ()
